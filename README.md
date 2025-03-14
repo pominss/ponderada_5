@@ -1,4 +1,3 @@
-# ponderada_5
 # Instruções
 - Faça uma cópia deste arquivo .md para um repositório próprio
 - Resolva as 8 questões objetivas assinalando a alternativa correta e **justificando sua resposta.**
@@ -25,11 +24,15 @@ let y = 10;
 ```
 a) A saída será undefined seguido de erro 
 
+
 b) A saída será 5 seguido de 10
 
 c) A saída será undefined seguido de undefined
 
 d) A saída será erro em ambas as linhas que utilizam console.log
+
+Correta: letra "a"
+Justificativa: o código não le o let y = 10 e nem o var = 5 pois eles foram declarados após o console.log. a jeito correto seria pondo o console log depois de declarar cada variavel, para o código ser lido da forma correta.
 
 
 **2) O seguinte código JavaScript tem um erro que impede sua execução correta. Analise e indique a opção que melhor corrige o problema. Justifique sua resposta.**
@@ -51,6 +54,9 @@ b) Substituir if (a || b === 0) por if (a === 0 && b === 0)
 c) Substituir if (a || b === 0) por if (a && b === 0)
 
 d) Remover completamente a verificação if (a || b === 0)
+
+Correta: letra "b"
+Justificativa: A verificação a || b === 0 indica o numero como invalido pois na soma o valor de b está atribuido como 0, desta forma, a OU b sendo 0 o numero sera invalido. Ao fazer uma verificação separada, analisando "a" de forma isolada e depois determinando que "b" també deve ser zero, acaba com o erro de apenas um numero ser 0 e invalidar o outro.
 
 ______
 **3) Ao executar esse código, qual será a saída no console? Indique a alternativa correta e justifique sua resposta.**
@@ -85,6 +91,8 @@ c) O código imprime 50.
 
 d) O código gera um erro.
 
+correta: "b"
+Justificativa: o código imprime 200 pois não possui um "break" após o case "eletrônico desta forma o código continua rodando e só para no case "vestuário"
 ______
 **4) Ao executar esse código, qual será a saída no console? Indique a alternativa correta e justifique sua resposta.**
 ```javascript
@@ -101,6 +109,9 @@ b) 6
 c) 18
 
 d) 24
+
+Correta: "d"   
+Justificativa: o Let numeros cria a lista, definindo a sequência de números. o numeros.map cria uma nova lista, multiplicando todos os numeros da "let numeros" por 2. o .filter filtra todos os numeros da lista criada, e mostra somente os números maiores que 5, trazendo o resultado 6, 8, 10. o .reduce soma todos os valores da lista criado pelo .filter, iniciando por 0 sendo assim: 0 + 6; 0 + 8; 14 + 10; o que gera 24.
 ______
 **5) Qual será o conteúdo do array lista após a execução do código? Indique a alternativa correta e justifique sua resposta.**
 
@@ -117,6 +128,10 @@ b) ["banana", "abacaxi", "manga"]
 c) ["banana", "abacaxi", "manga", "laranja"]
 
 d) ["banana", "maçã", "uva", "abacaxi", "manga"]
+
+Correta: "c"
+Justificativa: O .splice remove e substitui os elementos dentro de uma lista, no exemplo mostrado, a lista inicial é definida, após isso o lista.splice o remove o elemento 1 e 2, respectivamente "maça" e "uva", pois o elemento 0 seria "banana". e substitui os dois elementos retirados por "abacaxi" e "manga". Por fim, o console.log mostra a nova lista com os elementos substituidos.
+
 ______
 **6) Abaixo há duas afirmações sobre herança em JavaScript. Indique a alternativa correta e justifique sua resposta**
 
@@ -131,6 +146,10 @@ b) As duas afirmações são verdadeiras, mas a segunda não justifica a primeir
 c) A primeira afirmação é verdadeira, e a segunda é falsa.
 
 d) A primeira afirmação é falsa, e a segunda é verdadeira.
+
+Correta: "b"
+Justifica: A primeira e a segunda afirmação afirmação estão corretas, porém a primeira fala sobre o conceito de herança e sua função, e a segunda afirmação, não justifica o funcionamento de herança, mas sim mostra como usa-la.
+
 ______
 **7) Dado o seguinte código. Indique a alternativa correta e justifique sua resposta.**
 
@@ -174,6 +193,9 @@ c) Apenas II é verdadeira.
 
 d) Apenas I é verdadeira.
 
+Correta: "a"
+Justificativa: Alternativa I: A classe Funcionario herda de Pessoa e pode acessar os atributos nome e idade diretamente. Alternativa II: O método apresentar() da classe Funcionario sobrepõe o método da classe Pessoa, mas chama o método da classe pai usando super, está correta. alternativa III está errada porque o javascript suporta herança de classes.
+
 ______
 
 **8) Analise as afirmações a seguir. Indique a alternativa correta e justifique sua resposta.**
@@ -189,10 +211,16 @@ c) A asserção é verdadeira e a razão é verdadeira, mas a razão não explic
 
 d) A asserção é verdadeira e a razão é verdadeira, e a razão explica a asserção.
 
+Correta: "b"
+Justificativa: A asserção está correta, pois o polimorfismo permite que diferentes classes respondam ao mesmo método de formas diferentes. A razão é falsa porque JavaScript não suporta a multi nomeação de métodos. Porém, o polimorfismo é implementado através de herança e sobrescrita de métodos.
+
+
 ______
 
 # Questões dissertativas
 9) O seguinte código deve retornar a soma do dobro dos números de um array, mas contém erros. Identifique os problema e corrija o código para que funcione corretamente. Adicione comentários ao código explicado sua solução para cada problema.
+
+A variável soma deve ser inicializada com 0 para evitar erros de referência. O método correto para obter o tamanho de uma lista é .length, não .size. O operador += acumula a soma do dobro dos números.
 
 ```javascript
 function somaArray(numeros) {
@@ -204,6 +232,21 @@ function somaArray(numeros) {
 }
 console.log(somaArray([1, 2, 3, 4]));
 ```
+
+```javascript
+function somaArray(numeros) {
+    let soma = 0; // Inicializa a soma
+    for (let i = 0; i < numeros.length; i++) { // Usa length no lugar de size que está incorreto
+        soma += 2 * numeros[i]; // Soma corretamente
+    }
+    return soma;
+}
+
+console.log(somaArray([1, 2, 3, 4])); // Saída esperada: 20
+
+
+console.log(somaArray(numeros)); // referenciando diretamente a var numeros ao inves de colocar os numeros
+```
 ______
 10) Crie um exemplo prático no qual você tenha duas classes:
 
@@ -211,3 +254,42 @@ ______
 - Uma classe `Livro` que herda de `Produto` e modifica o método `calcularDesconto()`, aplicando um desconto de 20% no preço dos livros.
 
 Explique como funciona a herança nesse contexto e como você implementaria a modificação do método na classe `Livro`.
+
+```javascript
+// Classe Produto
+class Produto {
+    constructor(nome, preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    // Método para aplicar desconto de 10%
+    calcularDesconto() {
+        return this.preco * 0.9; // Aplica 10% de desconto
+    }
+}
+
+// Classe Livro que herda de Produto
+class Livro extends Produto {
+    constructor(nome, preco, autor) {
+        super(nome, preco); // Chama o construtor da classe Produto
+        this.autor = autor;
+    }
+
+    // Sobrescrevendo o método calcularDesconto() para aplicar 20%
+    calcularDesconto() {
+        return this.preco * 0.8; // Aplica 20% de desconto
+    }
+}
+
+// Exemplo de uso
+const produtoGenerico = new Produto("Mouse", 100);
+console.log(`Preço com desconto do produto: R$${produtoGenerico.calcularDesconto().toFixed(2)}`);
+
+const livro = new Livro("JavaScript Avançado", 150, "John Doe");
+console.log(`Preço com desconto do livro: R$${livro.calcularDesconto().toFixed(2)}`);
+```
+Explicação: A classe "Livro" herda da classe "Produto" usando extends. Isso significa que "Livro" possui os mesmos atributos (nome, preco) e métodos "calcular desconto" de "Produto".
+Uso do super(): no construtor de "Livro", usamos super(nome, preco); para chamar o construtor da classe pai (Produto) e inicializar nome e preco.
+Sobrescrita de Método (calcularDesconto()): "Produto" possui um método "calcular esconto" que aplica 10% de desconto.
+"Livro" modifica (sobrescreve) esse método para aplicar um desconto de 20%.
